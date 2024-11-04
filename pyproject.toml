@@ -1,0 +1,21 @@
+[tool.poetry]
+name = ""
+version = "0.1.0"
+description = ""
+authors = ["Vladislav <barabayne@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+ruff = "^0.6.9"
+pre-commit = "^4.0.1"
+sqlalchemy = "^2.0.35"
+fastapi = "^0.115.0"
+pydantic-settings = "^2.5.2"
+alembic = "^1.13.3"
+mypy = "^1.13.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

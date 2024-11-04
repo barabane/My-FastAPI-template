@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 from src.config import settings
 
-if settings.MODE == "TEST":
+if settings.MODE == 'TEST':
     DATABASE_URL = settings.DATABASE_URL
 else:
     DATABASE_URL = settings.TEST_DATABASE_URL

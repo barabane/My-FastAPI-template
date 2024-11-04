@@ -1,7 +1,7 @@
 import uuid
 
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import Mapped, mapped_column, as_declarative
+from sqlalchemy.orm import Mapped, as_declarative, mapped_column
 
 
 @as_declarative()

@@ -14,7 +14,7 @@ config = context.config
 # This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
-config.set_main_option('sqlalchemy.url', f'{settings.DATABASE_URL}&async_fallback=True')
+config.set_main_option('sqlalchemy.url', f'{settings.DATABASE_URL}?async_fallback=True')
 
 # add your model's MetaData object here
 # for 'autogenerate' support

@@ -23,7 +23,7 @@ class BaseRepository(ABC):
 
     async def add(self, entity: BaseDTO, session: AsyncSession) -> BaseModel:
         res = await session.execute(
-            insert(self.model).values(**entity).returning(self.model)
+            insert(self.model).values(**entity.model_dump()).returning(self.model)
         )
         return res.scalar_one()
 
@@ -36,7 +36,7 @@ class BaseRepository(ABC):
         res = await session.execute(
             update(self.model)
             .where(self.model.id == entity_id)
-            .values(**new_entity)
+            .values(**new_entity.model_dump())
             .returning(self.model)
         )
         return res.scalar_one()

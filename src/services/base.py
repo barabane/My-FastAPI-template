@@ -17,11 +17,11 @@ class BaseService(ABC):
         res: BaseModel | None = await self.repository.get_by_id(
             entity_id=entity_id, session=session
         )
-        return self.schemas.get_scheme(**res)
+        return self.schemas.get_scheme(**res.__dict__)
 
     async def add(self, entity: BaseDTO, session: AsyncSession):
         res: BaseModel = await self.repository.add(entity=entity, session=session)
-        return self.schemas.get_scheme(**res)
+        return self.schemas.get_scheme(**res.__dict__)
 
     async def delete_by_id(self, entity_id, session: AsyncSession) -> None:
         return self.repository.delete_by_id(entity_id=entity_id, session=session)
@@ -32,7 +32,7 @@ class BaseService(ABC):
         res = await self.repository.update(
             new_entity=new_entity, entity_id=entity_id, session=session
         )
-        return self.schemas.get_scheme(**res)
+        return self.schemas.get_scheme(**res.__dict__)
 
 
 def get_base_service() -> BaseService:

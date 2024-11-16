@@ -4,8 +4,8 @@ from typing import Dict, List, Optional
 from sqlalchemy import delete, insert, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from database.models.base import BaseModel
-from dto.base import BaseDTO
+from src.database.models.base import BaseModel
+from src.dto.base import BaseDTO
 
 
 class BaseRepository(ABC):
@@ -16,7 +16,7 @@ class BaseRepository(ABC):
         return await session.get(self.model, entity_id)
 
     async def get_all(
-        self, query_params: Optional[Dict[str, str]], session: AsyncSession
+        self, session: AsyncSession, query_params: Optional[Dict[str, str]] = None
     ) -> List[BaseModel]:
         res = await session.execute(select(self.model).filter_by(**query_params))
         return res.scalars().all()

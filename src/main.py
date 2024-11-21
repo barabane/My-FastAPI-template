@@ -8,4 +8,4 @@ async def lifespan(_):
     yield
 
 
-app = FastAPI(title='', lifespan=lifespan)
+app = FastAPI(title='FastAPI Template', lifespan=lifespan)

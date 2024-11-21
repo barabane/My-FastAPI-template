@@ -1,0 +1,17 @@
+name: Template pipeline
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    init:
+        runs-on: ubuntu-latest
+        steps:
+            - name: build
+              run: |
+                docker build -t api .
+            - name: run
+              run: |
+                docker run --rm -p 8000:8000 api

@@ -21,4 +21,9 @@ jobs:
 
           - name: run docker container
             run: |
-              docker run --rm -p 8000:8000 api
+              docker run -p 8000:8000 api
+
+          - name: stop and delete container
+            run: |
+              docker stop api
+              docker rm api

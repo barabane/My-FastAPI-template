@@ -21,7 +21,7 @@ jobs:
 
           - name: run docker container
             run: |
-              docker run --name api api
+              docker run -d --name api api
 
           - name: stop and delete container
             run: |

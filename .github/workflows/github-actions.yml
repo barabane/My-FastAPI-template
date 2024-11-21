@@ -6,12 +6,19 @@ on:
             - main
 
 jobs:
-    init:
+    build:
         runs-on: ubuntu-latest
         steps:
-            - name: build
-              run: |
-                docker build -t api .
-            - name: run
-              run: |
-                docker run --rm -p 8000:8000 api
+          - name: checkout
+            uses: actions/checkout@v3
+
+          - name: set uo docker buildx
+            uses: docker/setup-buildx-action@v2
+
+          - name: build docker image 
+            run: |
+              docker build -t api .
+
+          - name: run docker container
+            run: |
+              docker run --rm -p 8000:8000 api

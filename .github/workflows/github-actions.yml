@@ -21,7 +21,14 @@ jobs:
 
           - name: run docker container
             run: |
-              docker run -d --name api api
+              docker run -d --name api -p 8000:8000 api
+
+          - name: wait container for start
+            run: |
+              until curl --silent --fail http://localhost:8080; do
+                echo "Waiting for container to start..."
+              done
+              echo "Container is ready"
 
           - name: stop and delete container
             run: |

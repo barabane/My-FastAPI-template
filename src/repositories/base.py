@@ -16,7 +16,7 @@ class BaseRepository(ABC):
         return await session.get(self.model, entity_id)
 
     async def get_all(
-        self, session: AsyncSession, query_params: Optional[Dict[str, str]] = None
+        self, session: AsyncSession, query_params: Optional[Dict[str, str]] = {}
     ) -> List[BaseModel]:
         res = await session.execute(select(self.model).filter_by(**query_params))
         return res.scalars().all()

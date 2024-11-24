@@ -47,7 +47,7 @@ class BaseService(ABC):
     ) -> None:
         await self.get_by_id(entity_id=entity_id, session=session)
 
-        return self.repository.delete_by_id(entity_id=entity_id, session=session)
+        return await self.repository.delete_by_id(entity_id=entity_id, session=session)
 
     async def update(
         self,

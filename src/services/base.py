@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -31,8 +31,11 @@ class BaseService(ABC):
     async def get_all(
         self,
         session: AsyncSession = Depends(get_async_session),
+        query_params: Optional[Dict[str, str]] = {},
     ):
-        res: Optional[List[BaseModel]] = await self.repository.get_all(session=session)
+        res: Optional[List[BaseModel]] = await self.repository.get_all(
+            session=session, query_params=query_params
+        )
         return [self.schemas.get_scheme(**model.__dict__) for model in res]
 
     async def add(

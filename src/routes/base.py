@@ -25,7 +25,7 @@ class BaseRouter(abc.ABC):
 
         async def get_entity_by_id(
             self, entity_id, session: AsyncSession = Depends(get_async_session)
-        ):
+        ) -> get_scheme:  # type: ignore
             return await self.service.get_by_id(entity_id=entity_id, session=session)
 
         async def get_all_entities(
